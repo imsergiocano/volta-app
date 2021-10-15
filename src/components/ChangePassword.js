@@ -8,12 +8,13 @@ export default () => {
     const { getSession } = useContext(AccountContext);
     
     const onSubmit = (event) => {
-        event.proventDefault();
-
+        console.log('Change password!');
+        event.preventDefault();
+        
         getSession().then(({user}) => {
 
             user.changePassword(password, newPassword, (err, result) => {
-                console.log('Change password!');
+                
                 if(err){
                     console.error(err);
                 } else {
@@ -21,6 +22,7 @@ export default () => {
                 }
             });
         });
+        
     };
 
     return(
