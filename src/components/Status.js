@@ -11,7 +11,7 @@ const Status = () => {
                 console.log('Session: ', session);
                 setStatus(true);
         });
-    }, []);
+    }, [getSession]);
 
     return(
         <div style={{fontSize:'24px'}}>

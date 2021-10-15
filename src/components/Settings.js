@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { AccountContext } from './Account';
 import  ChangePassword  from './ChangePassword';
 
-export default  () => {
+const Settings = () => {
     const { getSession } = useContext(AccountContext);
 
     const [loggeIn, setLoggedIn] = useState(false);
@@ -11,7 +11,7 @@ export default  () => {
         getSession().then(() => {
             setLoggedIn(true);
         });
-    }, []);
+    }, [getSession]);
 
     return(
         <div className='settings'>
@@ -24,3 +24,5 @@ export default  () => {
         </div>
     );
 };
+
+export default Settings;

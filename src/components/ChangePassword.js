@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AccountContext } from './Account';
 
-export default () => {
+const ChangePassword = () => {
     const [password, setPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
@@ -43,3 +43,5 @@ export default () => {
         </div>
     );
 };
+
+export default ChangePassword;
