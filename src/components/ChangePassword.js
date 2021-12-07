@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AccountContext } from './Account';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 const ChangePassword = () => {
     const [password, setPassword] = useState('');
@@ -29,16 +31,16 @@ const ChangePassword = () => {
         <div>
             <form onSubmit={onSubmit}>
                 <label>Current password</label>
-                <input
+                <TextField
                     value={password}
                     onChange={ (event) => setPassword(event.target.value ) }
                 />
                 <label>New password</label>
-                <input
+                <TextField
                     value={newPassword}
                     onChange={(event)=> setNewPassword(event.target.value)}
                 />
-                <button type='submit'>Change password</button>
+                <Button type='submit' variant="outlined" color="secondary">Change password</Button>
             </form>
         </div>
     );

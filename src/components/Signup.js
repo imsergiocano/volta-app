@@ -1,58 +1,74 @@
 import React, { useState } from 'react';
 import UserPool from '../UserPool';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import Container from '@material-ui/core/Container'
+import Link from '@material-ui/core/Link'
+import withRoot from '../modules/withRoot';
+import Typography from './Typography';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
+    
+
     const onSubmit = (event) => {
         event.preventDefault();
         var attributeList = [];
-
         UserPool.signUp(email, password, attributeList, null, (error, data) => {
             if(error){
                 console.error(error);
             }
             console.log(data);
         });
+
     }
     return (
-        <div className='form-content-left'>
-            <form className='form' onSubmit={onSubmit}>
-                <h1>Get started with us today! Create your account by filling out the information below.</h1>
-                <div className='form-iputs'>
-                    <label className='form-label' htmlFor='email'>Email</label>
-                    <input 
+        <Container maxWidth="sm">
+            <form  onSubmit={onSubmit}>
+                <React.Fragment>
+                    <Typography variant="h3" gutterBottom marked="center" align="center">
+                        Sign Up
+                    </Typography>
+                </React.Fragment>
+                <div >
+                    <TextField 
+                        label='Email'
                         type='text'
                         name='email'
-                        className='form-input'
+                        fullWidth
                         placeholder='example@mail.com'
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                     />
                 </div>
-                <div className='form-iputs'>
-                    <label className='form-label' htmlFor='password'>Password</label>
-                    <input 
+                <div >
+                    <TextField 
+                        fullWidth
+                        label= 'Password'
                         type='password'
                         value={password}
-                        className='form-input'
                         onChange={(event) => setPassword(event.target.value)}
-                    ></input>
+                    ></TextField>
                 </div>
-                <div className='form-iputs'>
-                    <label className='form-label' htmlFor='password'>Confirm Password</label>
-                    <input 
+                <div >
+                    <TextField 
+                        fullWidth
+                        label='Confirm Password'
                         type='password'
                         value={password2}
-                        className='form-input'
                         onChange={(event) => setPassword2(event.target.value)}
-                    ></input>
+                    ></TextField>
                 </div>
-                <button className='form-input-btn' type='submit'>Sign Up</button>
-                <span className='form-input-login'>Already have an account? Login <a href='http://localhost:3000/'>here</a></span>
+                <Button type='submit' variant="outlined" color="secondary">Sign Up</Button>
+                <Typography align="center">
+                    <Link underline="always" href='/login/'>Already have an account? Login here</Link>
+                </Typography>
             </form>
-        </div>
+            <br/>
+            <br/>
+        </Container>
     );
 };
-export default Signup;
+export default withRoot(Signup);

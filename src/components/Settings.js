@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { AccountContext } from './Account';
 import  ChangePassword  from './ChangePassword';
+import withRoot from '../modules/withRoot';
 
 const Settings = () => {
     const { getSession } = useContext(AccountContext);
@@ -25,4 +26,4 @@ const Settings = () => {
     );
 };
 
-export default Settings;
+export default withRoot(Settings);
